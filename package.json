@@ -18,5 +18,9 @@
     "@types/csso": "^5.0.0",
     "@types/uglify-js": "^3.13.2",
     "prettier": "^2.6.2"
+  },
+  "scripts": {
+    "dev": "node node_modules/supervisor/lib/cli-wrapper.js -w . index.js",
+    "start": "node node_modules/supervisor/lib/cli-wrapper.js index.js"
   }
 }
