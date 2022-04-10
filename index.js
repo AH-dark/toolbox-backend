@@ -28,19 +28,21 @@ const md5 = crypto.createHash("md5");
 const hash = md5.update(String(frontendDomain)).digest("hex");
 
 app.use((req, res, next) => {
-    const headerMd5 = req.header("X-Domain-Validate");
-    if (hash.toString().toUpperCase() !== headerMd5) {
-        console.log(
-            "[Express]",
-            "Domain check error |",
-            "Frontend MD5:",
-            headerMd5,
-            "| Backend MD5:",
-            hash.toString().toUpperCase()
-        );
-        res.sendStatus(403);
-        res.end();
-        return;
+    if (req.method === "POST") {
+        const headerMd5 = req.header("X-Domain-Validate");
+        if (hash.toString().toUpperCase() !== headerMd5) {
+            console.log(
+                "[Express]",
+                "Domain check error |",
+                "Frontend MD5:",
+                headerMd5,
+                "| Backend MD5:",
+                hash.toString().toUpperCase()
+            );
+            res.sendStatus(403);
+            res.end();
+            return;
+        }
     }
     next();
 });
