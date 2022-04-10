@@ -12,7 +12,10 @@ app.use((req, res, next) => {
         "Access-Control-Allow-Origin",
         process.env.NODE_ENV === "development" ? "*" : frontendDomain
     );
-    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Content-Type,X-Domain-Validate"
+    );
     res.setHeader("Access-Control-Max-Age", "3600");
     if (process.env.NODE_ENV !== "development") {
         res.setHeader("Access-Control-Allow-Credentials", "true");
