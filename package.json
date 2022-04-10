@@ -19,7 +19,7 @@
     "prettier": "^2.6.2"
   },
   "scripts": {
-    "dev": "node node_modules/supervisor/lib/cli-wrapper.js -w . index.js",
-    "start": "node node_modules/supervisor/lib/cli-wrapper.js index.js"
+    "dev": "node scripts/dev.js",
+    "start": "node scripts/start.js"
   }
 }
