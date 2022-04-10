@@ -14,6 +14,9 @@ app.use((req, res, next) => {
     );
     res.setHeader("Access-Control-Allow-Headers", "*");
     res.setHeader("Access-Control-Max-Age", "3600");
+    if (process.env.NODE_ENV !== "development") {
+        res.setHeader("Access-Control-Allow-Credentials", "true");
+    }
     next();
 });
 
